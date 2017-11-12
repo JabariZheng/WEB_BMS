@@ -1,8 +1,9 @@
-'use strict'
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -13,8 +14,9 @@ module.exports = {
     app: './src/main.js'
   },
   output: {
-    path: config.build.assetsRoot,
+    path: '/dist',
     filename: '[name].js',
+    chunkFilename: '[name].chunk.js',
     publicPath:'/'
   },
   resolve: {
@@ -22,7 +24,8 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-    }
+    },
+    symlinks: false
   },
   module: {
     rules: [
@@ -30,6 +33,17 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css!sass-loader"
+        })
+      },
+      {
+        test: /\.less$/,
+        use: "style-loader!css-loader!less-loader"
       },
       {
         test: /\.js$/,
@@ -61,5 +75,18 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename:__dirname+'/index.html',    //生成的html存放路径，相对于 path
+      template:'index.html',   
+      inject:true,    //允许插件修改哪些内容，包括head与body
+      hash:true,    //为静态资源生成hash值
+      showErrors:true,    //显示错误信息到html
+      minify:{    //压缩HTML文件
+          removeComments:true,    //移除HTML中的注释
+          collapseWhitespace:false    //删除空白符与换行符
+      }
+    })
+  ]
 }

@@ -1,5 +1,3 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App'
@@ -9,6 +7,15 @@ Vue.config.productionTip = false
 
 Vue.use(Vuex)
 
+import ElementUI from 'element-ui'
+Vue.use(ElementUI)
+
+import _ from 'lodash'
+Vue.prototype._=_
+
+import api from './api/index.js'
+Vue.prototype.$api = api
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -16,3 +23,4 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+ 

@@ -1,7 +1,10 @@
-var root = ''
+import { Loading,Message  } from 'element-ui';
+import route from "../router/index.js"
+
+var root = '';
+var loadinginstace;
 
 var axios = require('axios')
-
 function toType (obj) {
   return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
 }
@@ -23,6 +26,7 @@ function filterNull (o) {
 }
 
 function apiAxios (method, url, params, success, failure) {
+  loadinginstace = Loading.service({ target: "#contentRigh"})
   if (params) {
     params = filterNull(params)
   }
@@ -36,21 +40,51 @@ function apiAxios (method, url, params, success, failure) {
   })
   .then(function (res) {
     if (res.data.success === true) {
+      loadinginstace.close()
       if (success) {
         success(res.data)
       }
     } else {
+      loadinginstace.close()
       if (failure) {
         failure(res.data)
       } else {
-        window.alert('error: ' + JSON.stringify(res.data))
+        // window.alert('error: ' + JSON.stringify(res.data))
+        if(res.data.Message=="请先登录"){
+          route.push("/");
+          $(".modal-backdrop").fadeOut("fast")
+        }
+        Message.error({
+          showClose:true,
+          message:res.data.Message,
+          duration:2000,
+          type: 'error'
+        })
       }
     }
   })
   .catch(function (err) {
-    let res = err.response
-    if (err) {
-      window.alert('api error, HTTP CODE: ' + res.status)
+    let res = err;
+    if (res) {
+      // window.alert('api error, HTTP CODE: ' + res.status);
+      if(res.data==undefined){
+          loadinginstace.close();
+          Message.error({
+            showClose:true,
+            message:"网络异常，请刷新浏览器重试！",
+            duration:1500,
+            type: 'error'
+          })
+        }else{
+          loadinginstace.close();
+          let err=JSON.stringify(res.message);
+          Message.error({
+            showClose:true,
+            message:err,
+            duration:1500,
+            type: 'error'
+          })
+        }
       return
     }
   })
