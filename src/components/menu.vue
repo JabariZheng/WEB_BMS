@@ -1,137 +1,57 @@
  <template>
 	<div class="menuContent">
+<!-- 		<div class="user-head-img">
+			<div class="head-img">
+				<img src="/../static/image/touxiang.jpg" alt="">
+			</div>
+			<div class="head-name">
+				管理员账号
+			</div>
+		</div> -->
 		<ul>
-			<li :class="{'active':activebar=='/home'}">
+			<li class="menu-level-one" :class="{'active':activebar=='/home'}">
 				<router-link :to="'/home'">
 					<i class="icon-home"></i>
 					<span>首页</span>
 				</router-link>
 			</li>
-			<li>
-				<i class="icon-user"></i>
-				<span>用户管理</span>
-				<ul class="second-menu">
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/'">
-						<span>企业会员信息</span>
-					</router-link>
-				</li>
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/'">
-						<span>个人会员信息</span>
-					</router-link>
-				</li>
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/'">
-						<span>员工信息</span>
-					</router-link>
-				</li>
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/'">
-						<span>级别设置</span>
-					</router-link>
-				</li>
-				</ul>
-			</li>
-			<li>
-				<i class="icon-user"></i>
-				<span>竞价管理</span>
-				<ul class="second-menu">
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/'">
-						<span>图纸输入</span>
-					</router-link>
-				</li>
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/'">
-						<span>竞价中图纸</span>
-					</router-link>
-				</li>
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/'">
-						<span>全部订单</span>
-					</router-link>
-				</li>
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/'">
-						<span>已下架图纸</span>
-					</router-link>
-				</li>
-				</ul>
-			</li>
-			<li>
-				<i class="icon-user"></i>
-				<span>信息数据统计</span>
-				<ul class="second-menu">
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/'">
-						<span>交期异常反馈</span>
-					</router-link>
-				</li>
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/'">
-						<span>质量异常反馈</span>
-					</router-link>
-				</li>
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/'">
-						<span>KPI指标</span>
-					</router-link>
-				</li>
-				</ul>
-			</li>
-			<li>
-				<i class="icon-user"></i>
-				<span>对账支付管理</span>
-				<ul class="second-menu">
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/'">
-						<span>对账单</span>
-					</router-link>
-				</li>
-				</ul>
-			</li>
-			<li>
-				<i class="icon-user"></i>
-				<span>消息管理</span>
-				<ul class="second-menu">
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/commonProblem'">
-						<span>平台消息推送</span>
-					</router-link>
-				</li>
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/commonProblem'">
-						<span>用户留言</span>
-					</router-link>
-				</li>
-				</ul>
-			</li>
-			<li>
-				<i class="icon-user"></i>
-				<span>内容管理</span>
-				<ul class="second-menu">
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/commonProblem'">
-						<span>公司新闻</span>
-					</router-link>
-				</li>
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/commonProblem'">
-						<span>标准化资料</span>
-					</router-link>
-				</li>
-					<li :class="{'active':activebar=='/'}">
-					<router-link :to="'/commonProblem'">
-							<span>周边配套厂商</span>
+			<li class="meun-level-two">
+				<a>
+					<i class="icon-user"></i>
+					<span>用户管理</span>
+					<i class="icon-chevron-down can-click"></i>
+				</a>
+				<ul>
+					<li :class="{'active':activebar=='/user-management'}">
+						<router-link :to="'/user-management'">
+							<span>用户信息管理</span>
+						</router-link>
+					</li>
+						<li :class="{'active':activebar=='/user-restric-management'}">
+						<router-link :to="'/user-restric-management'">
+							<span>用户权限设置</span>
 						</router-link>
 					</li>
 				</ul>
+			</li>
+            <li class="menu-level-one" :class="{'active':activebar=='/project-management'}">
+				<router-link :to="'/project-management'">
+					<i class="icon-folder"></i>
+					<span>项目管理</span>
+				</router-link>
+			</li>
+			<li class="menu-level-one" :class="{'active':activebar=='/device-management'}">
+				<router-link :to="'/device-management'">
+					<i class="icon-cpu"></i>
+					<span>设备管理</span>
+				</router-link>
 			</li>
 		</ul>
 	</div>
 </template>
 <script type="text/javascript">
+	import store from '@/vuex/menuStore'
+	import {mapState,mapMutations} from 'vuex'
 	export default{
 		data(){
 			return{
@@ -139,13 +59,23 @@
 			}
 		},
 		methods: {
-
+			...mapMutations([
+				'changeActivebar',
+				'changeRouterTitle'
+			]),
+		},
+		computed:{
+			...mapState({
+				activebar:state=>state.activebar
+			})
 		},
 		created(){//页面加载之前
-
+			const uri = this.$route.path;
+			this.changeActivebar(uri)
+			const title = this.$route.meta.title;
+			this.changeRouterTitle(title)	
 		},
 		mounted(){//页面加载完之后
-
 			let li=document.getElementsByTagName('li');
 			for(var i = 0 ; i < li.length ; i ++ ){
 				li[i].onmouseover=function() {
@@ -160,7 +90,25 @@
 					}
 				}
 			}
-
+			//
+			$(".meun-level-two>a").click(function(){
+				$(this).next().stop(false,false).slideToggle(function(){
+					if($(this).is(":visible")){
+						$(".can-click").addClass("icon-chevron-up");
+					}else{
+						$(".can-click").removeClass("icon-chevron-up");
+					}
+				});
+			})
 		},
+		watch:{
+			$route(){
+				const uri = this.$route.path;
+				this.changeActivebar(uri)
+				const title = this.$route.meta.title;
+				this.changeRouterTitle(title)	
+			}
+		},
+		store
 	}
 </script>

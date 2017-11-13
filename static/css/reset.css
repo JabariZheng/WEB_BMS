@@ -58,6 +58,9 @@ a {
 a:hover{
     text-decoration: none;
 }
+a:focus, a:hover{
+    text-decoration: none;
+}
 ins {
     background-color:#ff9;
     color:#000;
