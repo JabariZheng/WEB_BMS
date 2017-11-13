@@ -1,0 +1,48 @@
+.header{
+	position: fixed;
+	z-index: 10;
+	width:100%; 
+	min-width: 1024px;
+	height: 40px;
+	background-color: #1c1f27;
+	.headBody{
+		display: flex;
+		height: 100%;
+		line-height: 40px;;
+		.head-left{
+			width: 240px;
+			color: #fff;
+			font-size: 18px;
+			text-align: center;
+		}
+		.head-right{
+			flex:1;
+			display: flex;
+			.welcome{
+				flex:1;
+				.menu-slide{
+					color: #fff;
+					font-size: 28px;
+				    vertical-align: middle;
+				    cursor: pointer;
+				    transition:color 0.3s;
+					&:hover{
+						color: $primary;
+					}
+				}
+			}
+			.logout{
+				display: flex;
+				cursor: pointer;
+				.btn-c{
+					width: 115px;
+					background-image: url("/../../static/image/POWER.png");
+					background-size: 12px 14px;
+					background-repeat:no-repeat;
+					background-position: 15px 13px;
+					padding-left:20px;
+				}
+			}
+		}
+	}
+}

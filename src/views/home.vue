@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		欢迎使用上海电气分布式能源规划设计平台后台管理系统！
+		欢迎使用后台管理系统！
 	</div>
 </template>
 <script type="text/javascript">
@@ -11,7 +11,7 @@
 			}
 		},
 		methods: {
-			
+
 		},
 		created(){
 

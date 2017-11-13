@@ -128,12 +128,6 @@
 					</li>
 				</ul>
 			</li>
-<!-- 			<li :class="{'active':activebar=='/commonProblem'}">
-				<router-link :to="'/commonProblem'">
-					<i class="icon-alert-circle"></i>
-					<span>常见问题管理</span>
-				</router-link>
-			</li> -->
 		</ul>
 	</div>
 </template>
@@ -145,13 +139,13 @@
 			}
 		},
 		methods: {
-			
+
 		},
 		created(){//页面加载之前
 
 		},
 		mounted(){//页面加载完之后
-            
+
 			let li=document.getElementsByTagName('li');
 			for(var i = 0 ; i < li.length ; i ++ ){
 				li[i].onmouseover=function() {

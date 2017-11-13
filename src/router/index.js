@@ -22,11 +22,11 @@ const router = new Router({
       		[
 	      		{
 	      			path: '/home',
-	      			name: 'Home',
+	      			name: 'home',
 	      			component: Home
 	      		}
 	      	]
     	}
   	]
 });
-export default router 
+export default router
