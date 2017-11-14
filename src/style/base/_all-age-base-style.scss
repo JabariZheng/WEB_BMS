@@ -1,0 +1,18 @@
+.search-input-btn-area{//顶部搜索区域
+	text-align: right; 
+}
+.table-icon-function-btn{//表格内操作按钮
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	border-radius: 2px;
+	cursor: pointer;
+	color: #fff;
+	background-color: $primary;
+	transition:background-color 0.3s;
+}
+.table-for-information{//包裹表格外层div
+	margin-top:20px;
+}

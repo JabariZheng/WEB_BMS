@@ -23,11 +23,11 @@
 		methods: {
 			logout(){
 				this.$api.post("/User/Logout",null,(res)=>{
-					if(res.Code==1){
-						sessionStorage.removeItem("loginList");
-						this.$router.push({name:"/"});
+					if(res.code==1){
+						// sessionStorage.removeItem("loginList");
+						this.$router.push({name:"Login"});
 					}else{
-						bDialog(res.Message);
+						
 					}
 				})
 			},

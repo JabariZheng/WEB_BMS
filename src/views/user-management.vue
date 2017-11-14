@@ -1,10 +1,10 @@
 <template>
 	<div class="user-management">
-		<div class="search-top">
+		<div class="search-input-btn-area">
 			<el-input v-model="searchValue" placeholder="请输入用户名" style="width: 300px" @keyup.enter.native="getAllUser"></el-input>
 			<el-button type="primary" style="width: 100px" @click="getAllUser">搜索</el-button>
 		</div>
-		<div class="show-table">
+		<div class="table-for-information">
 			<table class="table table-hover information-table">
 				<thead>
 					<tr>
@@ -16,7 +16,6 @@
 						<th>注册时间</th>
 						<th>到期时间</th>
 						<th>账号状态</th>
-						<th>操作</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -38,21 +37,6 @@
 							<span class="isDelete" v-if="item.is_deleted==true">已删除</span>							
 							<span class="isActive" v-if="item.is_active==true && item.is_deleted==false && item.is_enable==true">已激活</span>	
 							<span class="idNoActive" v-if="item.is_active==false && item.is_deleted==false && item.is_enable==true">未激活</span>		
-						</td>
-						<td>
-							<span v-if="item.member_level!=10 && item.is_deleted==false" class="icon-setting edit-user" title="设置" @click="dialog(
-								item.is_enable,
-								item.is_active,
-								item.source_restricted,
-								item.device_restricted,
-								item.load_restricted,
-								item.member_level,
-								item.expired_time,
-								item.is_deleted,
-								item.id
-								)"></span>
-							<span class="icon-trash-2 edit-user" v-if="item.member_level!=10 && item.is_deleted==false" title="删除" @click="deleteMember(item.id)"></span>
-							<span class="icon-rotate-ccw edit-user" v-if="item.member_level!=10 && item.is_deleted==true" title="恢复" @click="restoreMember(item.id)"></span>
 						</td>
 					</tr>
 				</tbody>
@@ -321,11 +305,10 @@
 					page:this.current,
 					pagesize:this.pagesize
 				}
-				this.$api.get("/Admin/GetMemberInfo",data,(res)=>{
+				this.$api.post("/User/GetMemberInfo",data,(res)=>{
 					console.log(res)
-					this.spinShow=false;
-					this.tableData=res.Data;
-					this.Alltotal=res.PageCount;
+					this.tableData=res.data;
+					this.Alltotal=res.pageCount;
 				})
 			},
 			SaveMemberInfo(){

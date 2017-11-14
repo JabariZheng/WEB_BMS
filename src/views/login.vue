@@ -37,9 +37,12 @@
 				let data={
 					userid:this.username,
 					password:this.password,
-					validcode:this.valiCode
 				};
-				this.$router.push({name:"home"});
+				this.$api.post("/User/Login",data,(res)=>{
+					if(res.code==1){
+						this.$router.push({name:"home"});					
+					}
+				})
 			},
 			contetnCenter(){
 				let windowHeight=$(window).height();

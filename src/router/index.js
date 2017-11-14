@@ -27,43 +27,43 @@ const router = new Router({
 	      		{
 	      			path: '/home',
 	      			name: 'home',
-                    meta:{
-                        title: '首页',
-                    },
+              meta:{
+                  title: '首页',
+              },
 	      			component: Home
 	      		},
-                {
-                    path: '/project-management',
-                    name: 'project-management',
-                    meta:{
-                        title: '项目管理',
-                    },
-                    component: ProjectManage
+            {
+                path: '/project-management',
+                name: 'project-management',
+                meta:{
+                    title: '项目管理',
                 },
-                {
-                    path: '/user-management',
-                    name: 'user-management',
-                    meta:{
-                        title: '用户信息管理',
-                    },
-                    component: UserManage
+                component: ProjectManage
+            },
+            {
+                path: '/user-management',
+                name: 'user-management',
+                meta:{
+                    title: '用户信息管理',
                 },
-                {
-                    path: '/user-restric-management',
-                    name: 'user-restric-management',
-                    meta:{
-                        title: '用户权限管理',
-                    },
-                    component: UserRestricManage
+                component: UserManage
+            },
+            {
+                path: '/user-restric-management',
+                name: 'user-restric-management',
+                meta:{
+                    title: '用户权限管理',
                 },
-                {
-                    path: '/device-management',
-                    name: 'device-management',
-                    meta:{
-                        title: '设备管理',
-                    },
-                    component: DeviceManage
-                }
+                component: UserRestricManage
+            },
+            {
+                path: '/device-management',
+                name: 'device-management',
+                meta:{
+                    title: '设备管理',
+                },
+                component: DeviceManage
+            }
 	      	]
     	}
   	]

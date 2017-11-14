@@ -1,13 +1,5 @@
  <template>
 	<div class="menuContent">
-<!-- 		<div class="user-head-img">
-			<div class="head-img">
-				<img src="/../static/image/touxiang.jpg" alt="">
-			</div>
-			<div class="head-name">
-				管理员账号
-			</div>
-		</div> -->
 		<ul>
 			<li class="menu-level-one" :class="{'active':activebar=='/home'}">
 				<router-link :to="'/home'">
