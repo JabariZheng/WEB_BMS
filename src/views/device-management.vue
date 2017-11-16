@@ -1,59 +1,64 @@
 <template>
 	<div class="device-management">
-		<div class="search-top">
-			<el-input v-model="searchValue" placeholder="请输入设备品牌" size="small" style="width: 300px" @keyup.enter.native="getAllDevice"></el-input>
-			<el-button type="primary" style="width: 100px" size="small" @click="getAllDevice">搜索</el-button>
+		<div class="search-input-btn-area">
+			<el-input v-model="searchValue" placeholder="请输入设备品牌" style="width: 300px" @keyup.enter.native="getAllDevice"></el-input>
+			<el-button type="primary" style="width: 100px" @click="getAllDevice">搜索</el-button>
 		</div>
-		<div class="show-table">
-			<table class="table table-hover information-table">
-				<thead>
-					<tr>
-						<th>设备ID</th>
-						<th>设备类型</th>
-						<th>设备品牌</th>
-						<th>设备型号</th>
-						<th>设备状态</th>
-						<th>设备创建人</th>
-						<th>操作</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr v-for="item in tableData">
-						<td>{{item.id}}</td>
-						<td>{{item.device_type_name}}</td>
-						<td>{{item.brand}}</td>
-						<td>{{item.model}}</td>
-						<td>
-							<span v-if="item.is_audit==false">未审核</span>
-							<span v-if="item.is_audit==true">已审核</span>
-						</td>
-						<td>{{item.user_name}}</td>
-						<td>
-							<span v-if="item.is_audit==false" class="icon-setting edit-button" title="设置" @click="dialog(
-							item.id,
-							item.device_type_id,
-							item.device_type_name,
-							item.brand,
-							item.model
-							)"></span>
-							<span v-if="item.is_audit==false" class="icon-feather edit-button" title="审核" @click="examineDevice(item.id)"></span>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="page-page">
-			<div class="page-left"></div>
-			<div class="page-right">
-				<el-pagination
-			      @size-change="changeSize"
-			      @current-change="changeCurrent"
-			      :current-page="1"
-			      :page-sizes="[15, 50, 100, 150]"
-			      :page-size="pagesize"
-			      layout="total, sizes, prev, pager, next, jumper"
-			      :total="Alltotal">
-			    </el-pagination>
+		<div class="table-for-information treeDom-table">
+			<div class="treeDomTable-tree-area"></div>
+			<div class="treeDomTable-table-area">
+				<div class="show-table">
+					<table class="table table-hover information-table">
+						<thead>
+							<tr>
+								<th>设备ID</th>
+								<th>设备类型</th>
+								<th>设备品牌</th>
+								<th>设备型号</th>
+								<th>设备状态</th>
+								<th>设备创建人</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr v-for="item in tableData">
+								<td>{{item.id}}</td>
+								<td>{{item.device_type_name}}</td>
+								<td>{{item.brand}}</td>
+								<td>{{item.model}}</td>
+								<td>
+									<span v-if="item.is_audit==false">未审核</span>
+									<span v-if="item.is_audit==true">已审核</span>
+								</td>
+								<td>{{item.user_name}}</td>
+								<td>
+									<span v-if="item.is_audit==false" class="icon-setting edit-button" title="设置" @click="dialog(
+									item.id,
+									item.device_type_id,
+									item.device_type_name,
+									item.brand,
+									item.model
+									)"></span>
+									<span v-if="item.is_audit==false" class="icon-feather edit-button" title="审核" @click="examineDevice(item.id)"></span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="page-page">
+					<div class="page-left"></div>
+					<div class="page-right">
+						<el-pagination
+					      @size-change="changeSize"
+					      @current-change="changeCurrent"
+					      :current-page="1"
+					      :page-sizes="[15, 50, 100, 150]"
+					      :page-size="pagesize"
+					      layout="total, sizes, prev, pager, next, jumper"
+					      :total="Alltotal">
+					    </el-pagination>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div id="modal-add" class="modal fade in" style="display: none;" tabindex="-1" role="dialog">

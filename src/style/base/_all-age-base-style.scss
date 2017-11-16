@@ -16,3 +16,14 @@
 .table-for-information{//包裹表格外层div
 	margin-top:20px;
 }
+.treeDom-table{//左边属性图右边表格展示
+	display: flex;
+}
+.treeDomTable-tree-area{//树形图
+    margin-right: 20px;
+	min-width: 200px;
+    border: 2px solid #ddd;
+}
+.treeDomTable-table-area{//树形图的对应图表
+	flex:1;
+}

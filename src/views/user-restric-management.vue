@@ -243,9 +243,9 @@
 				this.expreTime=expired_time;
 				this.mid=id;
 				this.accountDelete=is_deleted;
-				let sourceList=JSON.parse(source_restricted);
-				let deviceList=JSON.parse(device_restricted);
-				let loadList=JSON.parse(load_restricted);
+				let sourceList=source_restricted;
+				let deviceList=device_restricted;
+				let loadList=load_restricted;
 				let mapSourceList=_.map(sourceList,function(n){
 					if(n.Enable==1){
 						return n.Name

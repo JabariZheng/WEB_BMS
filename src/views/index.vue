@@ -5,6 +5,7 @@
 			<MenuLeft></MenuLeft>
 			<div id="contentRigh" class="contentRigh"> 
 				<RouterTitle></RouterTitle>
+				<BrandNav></BrandNav>
 				<router-view></router-view>
 				<Foot></Foot>
 		  </div>
@@ -17,14 +18,15 @@
 	import App from '../App'
  	import HeadTop from '../components/header.vue'
  	import RouterTitle from '../components/title.vue'
+ 	import BrandNav from '../components/brandNav.vue'
  	import Foot from '../components/footer.vue'
 	import MenuLeft from '../components/menu.vue'
 
 	export default{
-		components:{HeadTop,RouterTitle,Foot,MenuLeft},
+		components:{HeadTop,RouterTitle,Foot,MenuLeft,BrandNav},
 		data(){
 			return{
-
+				
 			}
 		},
 		methods: {

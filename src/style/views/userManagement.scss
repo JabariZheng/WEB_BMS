@@ -1,0 +1,123 @@
+.user-management{
+	padding: 20px;
+	.search-top{
+		text-align: right;
+	}
+	.show-table{
+		margin-top: 20px;
+		.information-table{
+			.edit-user{
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				line-height: 20px;
+				text-align: center;
+				border-radius: 2px;
+				cursor: pointer;
+				color: #fff;
+				background-color: $primary;
+				transition:background-color 0.3s;
+			}
+			.edit-user:hover{
+				background-color: $baseHover;
+			}
+			.isActive{
+				color: #2d8cf0;
+			}
+			.idNoActive{
+				color: #8e1a1d;
+			}
+			.isDelete{
+				color: #eee;
+			}
+			.isEnable{
+				color: #eee;
+			}
+			
+		}
+	}
+	.page-page{
+		display: flex;
+		.page-left{
+			flex:1;
+		}
+	}
+	#modal-add{
+		.modal-container{
+			width: 900px;
+			background-color:#f4f4f4;
+			margin-bottom: 20px;
+			.modal-header{
+				background-color: #fff;
+			}
+			.modal-body{
+				margin: 15px;
+				background-color: #fff; 
+				.body-info{
+					margin: auto;
+					width: 80%;
+					.setting-list{
+						display: flex;
+						line-height: 36px;
+						.list-name{
+							width: 100px;
+							text-align: right;
+						}
+						.list-detail{
+							flex:1;
+							margin-left: 20px;
+							.statue{
+								.el-checkbox-group{
+									.el-checkbox{
+										margin-left: 23px;
+									}
+								}
+								.el-radio__label{
+									display: inline-block;
+									min-width: 70px;
+								}
+								.el-checkbox__label {
+									display: inline-block;
+									min-width: 70px;
+								}
+							}
+						}
+					}
+					.setting-list:not(:last-child){
+						margin-bottom: 15px;
+					}
+					.el-input__inner{
+						height: 25px;
+					}
+				}
+			}
+			.modal-footer{
+				background-color: #fff;
+			}
+		}
+	}
+
+}
+.edit-button{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	border-radius: 2px;
+	cursor: pointer;
+	color: #fff;
+	background-color: $primary;
+	transition:background-color 0.3s;
+}
+.edit-button:hover{
+	background-color: #a5484a;
+}
+.el-message{
+	top:40px;
+	padding:12px;
+	& > img{
+		width: 44px;
+		height: 44px;
+	}
+}
