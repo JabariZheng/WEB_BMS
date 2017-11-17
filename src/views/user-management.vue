@@ -56,9 +56,6 @@
 			    </el-pagination>
 			</div>
 		</div>
-		<div> 
-			<el-button @click="testRouter">test</el-button>
-		</div>
 	</div>
 </template>
 <script type="text/javascript">
@@ -122,9 +119,6 @@
 					this.tableData=res.data;
 					this.Alltotal=res.pageCount;
 				})
-			},
-			testRouter(){
-				this.$router.push({path:'/user-test'})
 			},
 		},
 		created(){

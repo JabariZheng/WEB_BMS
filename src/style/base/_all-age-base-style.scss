@@ -21,8 +21,12 @@
 }
 .treeDomTable-tree-area{//树形图
     margin-right: 20px;
-	min-width: 200px;
+	width: 200px;
+	overflow-x:hidden;
     border: 2px solid #ddd;
+    .tree-scroll-hide{
+    	width: 215px;
+    }
 }
 .treeDomTable-table-area{//树形图的对应图表
 	flex:1;

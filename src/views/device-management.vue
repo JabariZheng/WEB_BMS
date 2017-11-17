@@ -5,7 +5,11 @@
 			<el-button type="primary" style="width: 100px" @click="getAllDevice">搜索</el-button>
 		</div>
 		<div class="table-for-information treeDom-table">
-			<div class="treeDomTable-tree-area"></div>
+			<div class="treeDomTable-tree-area">
+				<div class="tree-scroll-hide">
+					<el-tree :data="treeData" @node-click="handleNodeClick"></el-tree>
+				</div>
+			</div>
 			<div class="treeDomTable-table-area">
 				<div class="show-table">
 					<table class="table table-hover information-table">
@@ -185,6 +189,57 @@
     			appendUnit:[],
     			setDataName:[],
     			getDataName:[],
+    			// 
+    			treeData:[
+    				{
+						label: '一级 1',
+						children: [
+							{
+							label: '二级 1-1',
+							children: [
+								{
+							  		label: '三级 1-1-1'
+								}
+							]}
+						]
+			        },
+			        {
+						label: '一级 1',
+						children: [
+							{
+							label: '二级 1-1',
+							children: [
+								{
+							  		label: '三级 1-1-1'
+								}
+							]}
+						]
+			        },
+			        {
+						label: '一级 1',
+						children: [
+							{
+							label: '二级 1-1',
+							children: [
+								{
+							  		label: '三级 1-1-1'
+								}
+							]}
+						]
+			        },
+			        {
+						label: '一级 1',
+						children: [
+							{
+							label: '二级 1-1',
+							children: [
+								{
+							  		label: '三级 1-1-1'
+								}
+							]}
+						]
+			        },
+    			]
 			}
 		},
 		methods: {
@@ -349,10 +404,21 @@
 					});
 				})
 			},
+			handleNodeClick(data) {
+				console.log(data);
+			},
+			treeSize(){
+				let tableSize=$(".treeDomTable-table-area").height();
+				$(".treeDomTable-tree-area").css("height",tableSize);
+			},
 		},
 		created(){
 		},
 		mounted(){
+			$(window).resize((event)=>{
+				this.treeSize()
+			}); 
+			this.treeSize()
 			this.getAllDevice();
 		}
 	}

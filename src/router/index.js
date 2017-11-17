@@ -10,7 +10,6 @@ import UserManage from '@/views/user-management'
 import UserRestricManage from '@/views/user-restric-management'
 import DeviceManage from '@/views/device-management'
 
-import UserTest from '@/views/user-test'
 Vue.use(Router)
 
 const router = new Router({
@@ -60,14 +59,6 @@ const router = new Router({
                         title: '用户信息管理',
                     },
                     component: UserManage
-                  },
-                  {
-                    path: '/user-test',
-                    name: 'user-management',
-                    meta:{
-                        title: '用户二级页面测试',
-                    },
-                    component: UserTest
                   },
                   {
                     path: '/user-restric-management',
