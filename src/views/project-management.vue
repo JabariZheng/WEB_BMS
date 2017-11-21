@@ -1,8 +1,8 @@
 <template>
 	<div class="project-management">
-		<div class="search-top">
-			<el-input v-model="searchValue" placeholder="请输入项目名称" size="small" style="width: 300px" @keyup.enter.native="getAllProject"></el-input>
-			<el-button type="primary" style="width: 100px" size="small" @click="getAllProject">搜索</el-button>
+		<div class="search-input-btn-area">
+			<el-input v-model="searchValue" placeholder="请输入项目名称" style="width: 300px" @keyup.enter.native="getAllProject"></el-input>
+			<el-button type="primary" style="width: 100px" @click="getAllProject">搜索</el-button>
 		</div>
 		<div class="show-table">
 			<table class="table table-hover information-table">

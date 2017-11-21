@@ -16,6 +16,9 @@ Vue.prototype._=_
 import api from './api/index.js'
 Vue.prototype.$api = api
 
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

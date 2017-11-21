@@ -409,7 +409,7 @@
 			},
 			treeSize(){
 				let tableSize=$(".treeDomTable-table-area").height();
-				$(".treeDomTable-tree-area").css("height",tableSize);
+				$(".treeDomTable-tree-area .el-tree").css("height",tableSize);
 			},
 		},
 		created(){

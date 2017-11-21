@@ -1,0 +1,16 @@
+.home{
+	padding: 0 !important;
+	background-color: transparent !important;
+}
+.echart-area{
+}
+.echart-div{
+	padding: 20px;
+	background-color: #fff;
+	& > div.e-bar-chart,
+	& > div.e-pie-chart,
+	& > div.e-line-chart
+	{
+		height: 200px;
+	}
+}
