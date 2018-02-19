@@ -29,6 +29,7 @@ module.exports = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
+      favicon:'./favico.ico',    // favicon 路径
       inject: true
     }),
     new FriendlyErrorsPlugin()
