@@ -17,7 +17,7 @@ module.exports = {
     path: '/dist',
     filename: '[name].js',
     chunkFilename: '[name].chunk.js',
-    publicPath:'/'
+    publicPath:'./'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -79,7 +79,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename:__dirname+'/index.html',    //生成的html存放路径，相对于 path
-      template:'index.html',   
+      template:'index.html',
       inject:true,    //允许插件修改哪些内容，包括head与body
       hash:true,    //为静态资源生成hash值
       showErrors:true,    //显示错误信息到html
