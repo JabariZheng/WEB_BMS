@@ -1,42 +1,30 @@
  <template>
 	<div class="menuContent">
 		<ul>
-			<li class="menu-level-one" :class="{'active':activebar=='home'}">
-				<router-link :to="'/home'">
-					<i class="icon-home"></i>
-					<span>首页</span>
+			<li v-for="item in menuList" :class="[
+				{'menu-level-one':item.menuLevel==1},
+				{'menu-level-two':item.menuLevel==2},
+				{'active':item.menuLevel==1 && activebar==item.routerName}
+			]">
+				<!-- 一级菜单 -->
+				<router-link :to="'/'+item.routerName" v-if="item.menuLevel==1">
+					<i :class="item.iconClass"></i>
+					<span>{{ item.name }}</span>
 				</router-link>
-			</li>
-			<li class="meun-level-two">
-				<a>
-					<i class="icon-user"></i>
-					<span>用户管理</span>
+
+				<!-- 二级菜单 -->
+				<a v-if="item.menuLevel==2">
+					<i :class="item.iconClass"></i>
+					<span>{{ item.name }}</span>
 					<i class="icon-chevron-down can-click"></i>
 				</a>
-				<ul>
-					<li :class="{'active':activebar=='user-management'}">
-						<router-link :to="'/user-management'">
-							<span>用户信息管理</span>
-						</router-link>
-					</li>
-						<li :class="{'active':activebar=='user-restric-management'}">
-						<router-link :to="'/user-restric-management'">
-							<span>用户权限设置</span>
+				<ul v-if="item.menuLevel==2">
+					<li v-for="child in item.children" :class="{'active':activebar==child.routerName}">
+						<router-link :to="'/'+child.routerName">
+							<span>{{ child.name }}</span>
 						</router-link>
 					</li>
 				</ul>
-			</li>
-            <li class="menu-level-one" :class="{'active':activebar=='project-management'}">
-				<router-link :to="'/project-management'">
-					<i class="icon-folder"></i>
-					<span>项目管理</span>
-				</router-link>
-			</li>
-			<li class="menu-level-one" :class="{'active':activebar=='device-management'}">
-				<router-link :to="'/device-management'">
-					<i class="icon-cpu"></i>
-					<span>设备管理</span>
-				</router-link>
 			</li>
 		</ul>
 	</div>
@@ -47,7 +35,8 @@
 	export default{
 		data(){
 			return{
-				liActive:0
+				liActive:0,
+				menuList:[]
 			}
 		},
 		methods: {
@@ -55,6 +44,13 @@
 				'changeActivebar',
 				'changeRouterTitle'
 			]),
+			getApiTest(){
+				this.$model.userList.getMemberInfo(null,(res)=>{
+					console.log(res);
+					},(err)=>{
+					console.log(err);
+					})
+			}
 		},
 		computed:{
 			...mapState({
@@ -65,7 +61,10 @@
 			const uri = this.$route.name;
 			this.changeActivebar(uri)
 			const title = this.$route.meta.title;
-			this.changeRouterTitle(title)	
+			this.changeRouterTitle(title)
+
+			this.menuList = this.$menu;
+      this.getApiTest();
 		},
 		mounted(){//页面加载完之后
 			let li=document.getElementsByTagName('li');
@@ -91,14 +90,14 @@
 						$(".can-click").addClass("icon-chevron-up");
 					}
 				});
-			})
+      });
 		},
 		watch:{
 			$route(){
 				const uri = this.$route.name;
 				this.changeActivebar(uri)
 				const title = this.$route.meta.title;
-				this.changeRouterTitle(title)	
+				this.changeRouterTitle(title)
 			}
 		},
 		store

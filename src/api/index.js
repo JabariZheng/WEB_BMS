@@ -1,7 +1,7 @@
 import { Loading,Message  } from 'element-ui';
 import route from "../router/index.js"
 
-var root = '';
+var root = 'https://www.easy-mock.com/mock/59ae062ce0dc6633419c7e16/bms';
 var loadinginstace;
 
 var axios = require('axios')

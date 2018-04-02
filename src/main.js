@@ -19,6 +19,15 @@ Vue.prototype.$api = api
 import echarts from 'echarts'
 Vue.prototype.$echarts = echarts
 
+// menu config list
+import menuConfig from "./config/menuConfig.js"
+Vue.prototype.$menu = menuConfig
+
+//
+import model from "./api/apiList/index.js"
+Vue.prototype.$model = model
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -26,4 +35,3 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
- 
