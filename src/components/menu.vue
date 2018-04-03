@@ -45,11 +45,11 @@
 				'changeRouterTitle'
 			]),
 			getApiTest(){
-				this.$model.userList.getMemberInfo(null,(res)=>{
+				this.$http.getMemberInfo(null,(res)=>{
 					console.log(res);
-					},(err)=>{
+				},(err)=>{
 					console.log(err);
-					})
+				});
 			}
 		},
 		computed:{
@@ -64,9 +64,10 @@
 			this.changeRouterTitle(title)
 			//读取菜单配置
 			this.menuList = this.$menu;
-      this.getApiTest();
 		},
 		mounted(){//页面加载完之后
+      		this.getApiTest();
+
 			let li=document.getElementsByTagName('li');
 			for(var i = 0 ; i < li.length ; i ++ ){
 				li[i].onmouseover=function() {

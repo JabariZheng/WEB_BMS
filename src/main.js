@@ -23,9 +23,9 @@ Vue.prototype.$echarts = echarts
 import menuConfig from "./config/menuConfig.js"
 Vue.prototype.$menu = menuConfig
 
-//
-import model from "./api/apiList/index.js"
-Vue.prototype.$model = model
+//ajax uri list
+import uri from "./api/uri/index.js"
+Vue.prototype.$http = uri
 
 
 /* eslint-disable no-new */

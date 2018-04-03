@@ -152,3 +152,7 @@ i{
 .el-input__inner,.el-button{
     border-radius: 0;
 }
+
+[v-cloak] {
+  display: none;
+}
