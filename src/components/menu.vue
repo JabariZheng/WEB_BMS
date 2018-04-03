@@ -62,7 +62,7 @@
 			this.changeActivebar(uri)
 			const title = this.$route.meta.title;
 			this.changeRouterTitle(title)
-
+			//读取菜单配置
 			this.menuList = this.$menu;
       this.getApiTest();
 		},
